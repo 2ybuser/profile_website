@@ -1,15 +1,854 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <title>Anda Yudho Baskoro — Software Engineer & Researcher</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
-</html>
+<!DOCTYPE html>
+
+<html class="scroll-smooth dark" lang="id" style=""><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Yudho Baskoro - Portfolio</title>
+<!-- Tailwind CSS CDN with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Space Grotesk & Plus Jakarta Sans / Geist -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration according to Obsidian Violet Design System -->
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['"Poppins"', 'sans-serif'],
+          display: ['"Poppins"', 'sans-serif'],
+        },
+        colors: {
+          "inverse-surface": "#e7defc",
+          "surface-container": "#211c32",
+          "secondary-container": "#571bc1",
+          "surface-container-highest": "#373148",
+          "on-secondary-fixed": "#23005c",
+          "primary-fixed-dim": "#ddb7ff",
+          "surface-variant": "#373148",
+          "secondary": "#d0bcff",
+          "error": "#ffb4ab",
+          "on-error-container": "#ffdad6",
+          "on-primary-fixed": "#2c0051",
+          "outline": "#988d9f",
+          "primary": "#ddb7ff",
+          "on-secondary-fixed-variant": "#5516be",
+          "primary-container": "#b76dff",
+          "surface-container-high": "#2c273d",
+          "surface-tint": "#ddb7ff",
+          "secondary-fixed": "#e9ddff",
+          "tertiary-container": "#009fb4",
+          "background": "#0b0716",
+          "on-error": "#690005",
+          "tertiary-fixed-dim": "#2fd9f4",
+          "inverse-primary": "#842bd2",
+          "secondary-fixed-dim": "#d0bcff",
+          "surface-container-low": "#1d182e",
+          "outline-variant": "#4d4354",
+          "tertiary": "#2fd9f4",
+          "on-primary": "#490080",
+          "on-primary-container": "#400071",
+          "on-secondary": "#3c0091",
+          "on-surface": "#e7defc",
+          "error-container": "#93000a",
+          "on-primary-fixed-variant": "#6900b3",
+          "tertiary-fixed": "#a2eeff",
+          "on-tertiary-fixed": "#001f25",
+          "on-tertiary": "#00363e",
+          "on-tertiary-container": "#002f36",
+          "surface": "#151025",
+          "surface-bright": "#3b364d",
+          "primary-fixed": "#f0dbff",
+          "surface-container-lowest": "#100b20",
+          "inverse-on-surface": "#332d44",
+          "surface-dim": "#151025",
+          "on-surface-variant": "#cfc2d6",
+          "on-background": "#e7defc",
+          "on-secondary-container": "#c4abff",
+          "on-tertiary-fixed-variant": "#004e5a",
+          obsidian: {
+            950: "#090611",
+            900: "#0d0918",
+            850: "#120b22",
+            800: "#151025",
+            750: "#1a1232",
+            700: "#21183c",
+            card: "#150e28",
+            border: "#2a1e4a",
+            glow: "#7c3aed"
+          }
+        }
+      }
+    }
+  </script>
+<!-- Custom CSS for specific ambient glow & layout refinements -->
+<style data-purpose="custom-decorations">
+    * {
+      font-family: 'Poppins', sans-serif !important;
+    }
+
+    /* Deep neon violet blurred atmospheric auras */
+    .radial-glow-hero {
+      position: absolute;
+      width: 760px;
+      height: 760px;
+      right: -100px;
+      top: -100px;
+      background: radial-gradient(circle, rgba(147, 51, 234, 0.45) 0%, rgba(124, 58, 237, 0.25) 40%, rgba(76, 29, 149, 0.15) 60%, rgba(13, 9, 24, 0) 80%);
+      filter: blur(80px);
+      border-radius: 9999px;
+      pointer-events: none;
+      z-index: 1;
+      animation: subtlePulse 8s ease-in-out infinite alternate;
+    }
+    .radial-glow-left {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      left: -150px;
+      top: 30%;
+      background: radial-gradient(circle, rgba(124, 58, 237, 0.25) 0%, rgba(76, 29, 149, 0.12) 45%, rgba(13, 9, 24, 0) 75%);
+      filter: blur(85px);
+      border-radius: 9999px;
+      pointer-events: none;
+      z-index: 1;
+      animation: subtlePulse 10s ease-in-out 2s infinite alternate;
+    }
+    .radial-glow-contact {
+      position: absolute;
+      width: 650px;
+      height: 650px;
+      right: -120px;
+      bottom: 50px;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.2) 0%, rgba(109, 40, 217, 0.15) 45%, rgba(13, 9, 24, 0) 80%);
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 1;
+      animation: subtlePulse 9s ease-in-out 1s infinite alternate;
+    }
+
+    /* Subtle ambient pulsation */
+    @keyframes subtlePulse {
+      0% {
+        opacity: 0.75;
+        transform: scale(0.97);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1.03);
+      }
+    }
+
+    /* Ambient button pulse */
+    @keyframes ctaPulse {
+      0%, 100% {
+        box-shadow: 0 0 16px rgba(124, 58, 237, 0.35);
+      }
+      50% {
+        box-shadow: 0 0 26px rgba(168, 85, 247, 0.6);
+      }
+    }
+    .pulse-cta {
+      animation: ctaPulse 3.5s ease-in-out infinite;
+    }
+
+    /* Accessibility: Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      .radial-glow-hero,
+      .radial-glow-left,
+      .radial-glow-contact,
+      .pulse-cta {
+        animation: none !important;
+      }
+      *, *::before, *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-[#090611] via-[#100b20] to-[#090611] min-h-screen text-[#e7defc] font-sans selection:bg-[#7c3aed] selection:text-white relative overflow-x-hidden flex flex-col justify-between">
+<!-- Ambient Background Orbs -->
+<div aria-hidden="true" class="radial-glow-hero"></div>
+<div aria-hidden="true" class="radial-glow-left"></div>
+<div aria-hidden="true" class="radial-glow-contact"></div>
+<!-- BEGIN: MainHeader -->
+<header class="w-full bg-[#0d0918]/85 backdrop-blur-md border-b border-[#2a1e4a] sticky top-0 z-50 transition-colors">
+<div class="max-w-[1440px] mx-auto px-10 md:px-16 lg:px-24 h-24 flex items-center justify-between">
+<!-- Brand Logo Mark -->
+<a aria-label="Beranda" class="flex items-center gap-3 group focus:outline-none" href="#">
+<div class="relative flex items-center justify-center p-1 rounded-2xl bg-[#1d1436] border border-[#4d3282]/60 shadow-[0_0_15px_rgba(168,85,247,0.3)] group-hover:shadow-[0_0_25px_rgba(168,85,247,0.7)] group-hover:border-[#a855f7] transition-all duration-300">
+<svg class="w-10 h-10 transition-transform duration-300 group-hover:scale-105" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<g>
+<path d="M14.5 12.2L24.8 6.5C26.1 5.8 27.7 6.2 28.5 7.5L34.2 17.2C34.9 18.5 34.5 20.1 33.2 20.9L22.9 26.6C21.6 27.3 20 26.9 19.2 25.6L13.5 15.9C12.8 14.6 13.2 13 14.5 12.2Z" fill="#a855f7"></path>
+<path d="M21.2 25.8L28.8 38.6C29.4 39.7 30.9 40 32 39.3L37.2 36.2C38.3 35.5 38.6 34.1 38 33L30.4 20.2L21.2 25.8Z" fill="#c084fc" fill-opacity="0.9"></path>
+<path d="M10.2 24.5L18.4 29.2L15.3 34.6C14.7 35.7 13.3 36 12.2 35.4L8.1 33C7 32.4 6.7 31 7.3 29.9L10.2 24.5Z" fill="#7e22ce"></path>
+<path d="M18.8 13.8L22.9 11.5L25.4 15.7L21.3 18L18.8 13.8Z" fill="#f3e8ff"></path>
+</g>
+</svg>
+</div>
+<span class="text-xl font-bold tracking-tight text-white group-hover:text-primary transition-colors"></span>
+</a>
+<!-- Center Navigation Links -->
+<nav aria-label="Main Navigation" class="hidden md:flex items-center space-x-10 lg:space-x-12">
+<a class="text-[#ece6ff] text-base lg:text-lg font-semibold hover:text-[#c084fc] relative py-1 after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-[#a855f7] after:shadow-[0_0_8px_#a855f7] after:scale-x-100 transition-colors duration-200" href="#beranda">Beranda</a>
+<a class="text-[#cfc2d6] text-base lg:text-lg font-medium hover:text-white transition-colors duration-200" href="#tentang">Tentang</a>
+<a class="text-[#cfc2d6] text-base lg:text-lg font-medium hover:text-white transition-colors duration-200" href="#keahlian">Keahlian</a>
+<a class="text-[#cfc2d6] text-base lg:text-lg font-medium hover:text-white transition-colors duration-200" href="#perjalanan">Perjalanan</a>
+<a class="text-[#cfc2d6] text-base lg:text-lg font-medium hover:text-white transition-colors duration-200" href="#kontak">Kontak</a>
+</nav>
+<!-- Right Utility Icon: Dark Mode Active Moon Toggle Button -->
+<div class="flex items-center gap-3">
+<button aria-label="Dark Mode Active" class="w-12 h-12 rounded-full border border-[#3b2a63] bg-[#160f2b] hover:bg-[#20153d] hover:border-[#a855f7] flex items-center justify-center text-[#ddb7ff] shadow-[0_0_12px_rgba(168,85,247,0.2)] hover:shadow-[0_0_20px_rgba(168,85,247,0.5)] transition-all duration-300 hover:scale-105 active:scale-95" type="button">
+<svg class="w-5 h-5 text-[#ddb7ff]" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+</svg>
+</button>
+</div>
+</div>
+</header>
+<!-- END: MainHeader -->
+<!-- BEGIN: HeroSection -->
+<main class="flex-1 relative flex items-center overflow-hidden py-16 lg:py-24" id="beranda">
+<div class="max-w-[1440px] w-full mx-auto px-10 md:px-16 lg:px-24 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center relative z-20">
+<!-- BEGIN: HeroIntroduction -->
+<div class="lg:col-span-7 flex flex-col justify-center items-start space-y-6">
+<!-- Pill Status Badge -->
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#1e153a]/90 border border-[#4c337d] text-[#ddb7ff] text-xs font-semibold tracking-wider uppercase shadow-[0_0_14px_rgba(168,85,247,0.3)] hover:border-[#a855f7] hover:shadow-[0_0_20px_rgba(168,85,247,0.45)] transition-all duration-300 cursor-default">
+<span class="w-2 h-2 rounded-full bg-[#a855f7] animate-pulse"></span>
+  Junior Software Engineer
+</div>
+<!-- Big Bold Title with Glowing Gradient -->
+<h1 class="text-6xl sm:text-7xl lg:text-[5.5rem] font-extrabold tracking-tight text-white leading-[1.03] select-none">
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-[#f3e8ff] to-[#d0bcff]">Yudho</span><br/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-[#e9ddff] via-[#c084fc] to-[#a855f7]">Baskoro</span>
+</h1>
+<!-- Subtitle Description -->
+<p class="text-base sm:text-lg lg:text-[1.125rem] font-normal text-[#cfc2d6] max-w-lg leading-relaxed pt-1">
+  Software engineer pemula yang memiliki antusiasme tinggi terhadap pengembangan website modern yang estetis, cepat, dan terukur.
+</p>
+<!-- CTA Button Component -->
+<div class="pt-4 flex flex-wrap gap-4 items-center">
+<a class="group pulse-cta inline-flex items-stretch border border-[#7c3aed] bg-[#1a1233]/90 hover:bg-[#231846] transition-all duration-300 hover:scale-[1.02] hover:border-[#c084fc] hover:shadow-[0_0_28px_rgba(168,85,247,0.6),0_0_12px_rgba(124,58,237,0.5)] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-[#a855f7] rounded-xl overflow-hidden relative" href="#kontak">
+<!-- Subtle shimmer effect -->
+<span class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none"></span>
+<!-- Purple Arrow Box Icon -->
+<div class="w-14 h-14 bg-gradient-to-br from-[#7c3aed] to-[#581c87] group-hover:from-[#9333ea] group-hover:to-[#6b21a8] transition-colors flex items-center justify-center shrink-0">
+<svg class="w-6 h-6 text-white stroke-[2.4] transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M7 17L17 7M17 7H8M17 7V16" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<!-- Text Box -->
+<div class="px-6 flex items-center justify-center font-bold text-white text-base sm:text-lg tracking-normal">
+  Lihat Proyek
+</div>
+</a>
+</div>
+</div>
+<!-- END: HeroIntroduction -->
+<!-- BEGIN: HeroPortrait -->
+<div class="lg:col-span-5 flex justify-center lg:justify-end items-center relative">
+<!-- Purple Backlight Glow behind avatar -->
+<div class="absolute w-[360px] h-[360px] bg-[#7c3aed]/30 rounded-full blur-3xl pointer-events-none -z-10 animate-pulse"></div>
+<div class="relative w-full max-w-[420px] lg:max-w-[440px] aspect-[4/5] rounded-[2.5rem] overflow-hidden border-2 border-[#3d296c]/80 hover:border-[#a855f7] shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_30px_rgba(124,58,237,0.25)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.9),0_0_45px_rgba(168,85,247,0.45)] transition-all duration-500 z-20 bg-[#120b24] group">
+<img alt="Yudho Baskoro" class="w-full h-full object-cover object-right filter brightness-95 contrast-105 group-hover:scale-105 transition-transform duration-700 ease-out" loading="eager" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD--I8s0pnFKABemJRyHQdej8IrKy5xoINWhIfqbra-tlF5eo_m5fBBrJ7XGF0sZ-UUitEE23VkYKp2JqacdxrWjOXjXNnfNGSz2rlYm-O7ofCAxhF-JvwQHr_PQWEgEE9B7FAeJWn3HOBZTQ84gClpBOF-UV-rZPhrB3IJctaABFr63KT1OXZhxBbbTY7kC4MK6rXT0EszgxMYInXon-RgiH4e4lm58S-P8LzLhVog1KB4rzXCruMvpw9qWdbiKP83zA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#0d0918]/70 via-transparent to-transparent pointer-events-none"></div>
+</div>
+</div>
+<!-- END: HeroPortrait -->
+</div>
+</main>
+<!-- END: HeroSection -->
+<!-- BEGIN: SectionTentang -->
+<section class="py-20 lg:py-28 relative z-20 border-t border-[#2a1e4a]" id="tentang">
+<div class="max-w-[1440px] mx-auto px-10 md:px-16 lg:px-24">
+<!-- Section Header -->
+<div class="mb-14">
+<span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#1c1236] border border-[#48307b] text-[#ddb7ff] text-xs sm:text-sm font-bold tracking-wide uppercase shadow-[0_0_12px_rgba(168,85,247,0.2)] hover:shadow-[0_0_18px_rgba(168,85,247,0.4)] transition-all">
+<span class="w-2 h-2 rounded-full bg-[#a855f7]"></span>
+  Tentang Saya
+</span>
+<h2 class="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight max-w-3xl leading-[1.15]">
+  Membangun Solusi Digital dengan Semangat &amp; Presisi
+</h2>
+</div>
+<!-- Two Columns Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+<!-- Col 1: Cerita Singkat & Highlight Stats -->
+<div class="lg:col-span-7 bg-[#150e28]/90 backdrop-blur-sm rounded-3xl p-8 sm:p-10 border border-[#2e2056] shadow-xl hover:border-[#a855f7] hover:shadow-[0_15px_35px_-5px_rgba(168,85,247,0.25),0_0_20px_rgba(168,85,247,0.2)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between">
+<div class="space-y-4">
+<p class="text-base sm:text-lg text-[#cfc2d6] font-normal leading-relaxed">
+  Halo! Saya <span class="font-bold text-white">Yudho Baskoro</span>, seorang software engineer yang berfokus pada pengembangan web modern. Saya memiliki ketertarikan mendalam dalam merancang antarmuka pengguna yang intuitif, estetis, dan berperforma tinggi.
+</p>
+<p class="text-base sm:text-lg text-[#cfc2d6] font-normal leading-relaxed">
+  Bagi saya, setiap baris kode adalah kesempatan untuk menyederhanakan masalah kompleks menjadi pengalaman digital yang mulus. Saya senantiasa menerapkan prinsip <em class="text-[#e9ddff]">clean code</em>, arsitektur yang modular, serta desain yang responsif di berbagai perangkat.
+</p>
+</div>
+<!-- Key Metrics / Stats -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-8 mt-6 border-t border-[#2e2056]">
+<div class="p-4 rounded-2xl bg-[#1d1438] border border-[#372666] hover:border-[#c084fc] hover:bg-[#231846] hover:-translate-y-1 hover:shadow-[0_10px_25px_-5px_rgba(168,85,247,0.35),0_0_15px_rgba(168,85,247,0.2)] transition-all duration-300 group cursor-default">
+<div class="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-[#ddb7ff] group-hover:from-white group-hover:to-[#c084fc]">10+</div>
+<div class="text-xs sm:text-sm font-medium text-[#cfc2d6] mt-1 group-hover:text-white transition-colors">Proyek Web Diselesaikan</div>
+</div>
+<div class="p-4 rounded-2xl bg-[#1d1438] border border-[#372666] hover:border-[#c084fc] hover:bg-[#231846] hover:-translate-y-1 hover:shadow-[0_10px_25px_-5px_rgba(168,85,247,0.35),0_0_15px_rgba(168,85,247,0.2)] transition-all duration-300 group cursor-default">
+<div class="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-[#ddb7ff] group-hover:from-white group-hover:to-[#c084fc]">2+</div>
+<div class="text-xs sm:text-sm font-medium text-[#cfc2d6] mt-1 group-hover:text-white transition-colors">Tahun Belajar &amp; Praktik</div>
+</div>
+<div class="p-4 rounded-2xl bg-[#1d1438] border border-[#372666] hover:border-[#c084fc] hover:bg-[#231846] hover:-translate-y-1 hover:shadow-[0_10px_25px_-5px_rgba(168,85,247,0.35),0_0_15px_rgba(168,85,247,0.2)] transition-all duration-300 group cursor-default">
+<div class="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-[#ddb7ff] group-hover:from-white group-hover:to-[#c084fc]">100%</div>
+<div class="text-xs sm:text-sm font-medium text-[#cfc2d6] mt-1 group-hover:text-white transition-colors">Antusiasme &amp; Dedikasi</div>
+</div>
+</div>
+</div>
+<!-- Col 2: Info Ringkas & Nilai Inti -->
+<div class="lg:col-span-5 bg-gradient-to-br from-[#160f2e] via-[#150e28] to-[#1a1138] rounded-3xl p-8 sm:p-10 border border-[#2e2056] shadow-xl hover:border-[#a855f7] hover:shadow-[0_15px_35px_-5px_rgba(168,85,247,0.25),0_0_20px_rgba(168,85,247,0.2)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between space-y-6">
+<div>
+<h3 class="text-xl font-extrabold text-white mb-6 flex items-center gap-2">
+<svg class="w-5 h-5 text-[#c084fc]" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="9"></circle>
+<path d="M12 8v4l3 3"></path>
+</svg>
+  Sekilas Info
+</h3>
+<div class="space-y-4">
+<div class="flex items-start gap-3.5 pb-4 border-b border-[#2e2056] group hover:border-[#4d3282] transition-colors">
+<div class="w-9 h-9 rounded-xl bg-[#231742] border border-[#472f7e] text-[#ddb7ff] flex items-center justify-center shrink-0 group-hover:border-[#a855f7] group-hover:shadow-[0_0_12px_rgba(168,85,247,0.4)] transition-all">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+<path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+</div>
+<div>
+<div class="text-xs font-semibold text-[#a89cb5] uppercase tracking-wider">Lokasi</div>
+<div class="text-base font-bold text-white group-hover:text-[#ddb7ff] transition-colors">Indonesia (WIB / GMT+7)</div>
+</div>
+</div>
+<div class="flex items-start gap-3.5 pb-4 border-b border-[#2e2056] group hover:border-[#107055] transition-colors">
+<div class="w-9 h-9 rounded-xl bg-[#092f23] border border-[#107055] text-emerald-400 flex items-center justify-center shrink-0 group-hover:shadow-[0_0_12px_rgba(16,185,129,0.4)] transition-all">
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+</div>
+<div>
+<div class="text-xs font-semibold text-[#a89cb5] uppercase tracking-wider">Status Ketersediaan</div>
+<div class="text-base font-bold text-emerald-300">Siap untuk Kolaborasi, Freelance &amp; Fulltime</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Nilai Inti -->
+<div class="pt-2">
+<div class="text-xs font-semibold text-[#a89cb5] uppercase tracking-wider mb-3">Nilai Inti &amp; Filosofi</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-3.5 py-1.5 rounded-xl bg-[#1f153a] border border-[#3f2a70] text-[#e7defc] font-medium text-xs shadow-sm hover:border-[#c084fc] hover:bg-[#281b4d] hover:text-white hover:shadow-[0_0_12px_rgba(168,85,247,0.35)] hover:-translate-y-0.5 transition-all duration-200 cursor-default">
+  ✨ Clean Code
+</span>
+<span class="px-3.5 py-1.5 rounded-xl bg-[#1f153a] border border-[#3f2a70] text-[#e7defc] font-medium text-xs shadow-sm hover:border-[#c084fc] hover:bg-[#281b4d] hover:text-white hover:shadow-[0_0_12px_rgba(168,85,247,0.35)] hover:-translate-y-0.5 transition-all duration-200 cursor-default">
+  🎯 UX-Focused
+</span>
+<span class="px-3.5 py-1.5 rounded-xl bg-[#1f153a] border border-[#3f2a70] text-[#e7defc] font-medium text-xs shadow-sm hover:border-[#c084fc] hover:bg-[#281b4d] hover:text-white hover:shadow-[0_0_12px_rgba(168,85,247,0.35)] hover:-translate-y-0.5 transition-all duration-200 cursor-default">
+  🚀 Continuous Learning
+</span>
+<span class="px-3.5 py-1.5 rounded-xl bg-[#1f153a] border border-[#3f2a70] text-[#e7defc] font-medium text-xs shadow-sm hover:border-[#c084fc] hover:bg-[#281b4d] hover:text-white hover:shadow-[0_0_12px_rgba(168,85,247,0.35)] hover:-translate-y-0.5 transition-all duration-200 cursor-default">
+  ⚡ High Performance
+</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: SectionTentang -->
+<!-- BEGIN: SectionKeahlian -->
+<section class="py-20 lg:py-28 relative z-20 bg-gradient-to-b from-transparent via-[#120b22]/70 to-[#0d0918] border-t border-[#2a1e4a]" id="keahlian">
+<div class="max-w-[1440px] mx-auto px-10 md:px-16 lg:px-24">
+<!-- Section Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-4">
+<div>
+<span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#1c1236] border border-[#48307b] text-[#ddb7ff] text-xs sm:text-sm font-bold tracking-wide uppercase shadow-[0_0_12px_rgba(168,85,247,0.2)]">
+<span class="w-2 h-2 rounded-full bg-[#a855f7]"></span>
+  Keahlian
+</span>
+<h2 class="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+  Teknologi &amp; Alat yang Dikuasai
+</h2>
+</div>
+<p class="text-[#cfc2d6] font-normal max-w-md text-base leading-relaxed">
+  Peralatan modern dan standar industri terkini yang saya gunakan untuk mewujudkan konsep menjadi produk digital berkinerja optimal.
+</p>
+</div>
+<!-- Skills Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Card 1: Frontend Development -->
+<div class="group bg-[#150e28] rounded-3xl p-8 border border-[#2e2056] hover:border-[#a855f7] hover:bg-[#1a1133] transition-all duration-300 shadow-xl hover:shadow-[0_15px_35px_-5px_rgba(168,85,247,0.3),0_0_25px_rgba(168,85,247,0.25)] hover:-translate-y-1.5 flex flex-col justify-between relative overflow-hidden">
+<div class="absolute -right-16 -top-16 w-36 h-36 bg-[#7c3aed]/15 rounded-full blur-2xl group-hover:bg-[#a855f7]/30 transition-all duration-500 pointer-events-none"></div>
+<div>
+<div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#7c3aed] to-[#581c87] text-white flex items-center justify-center mb-6 group-hover:from-[#9333ea] group-hover:to-[#6b21a8] group-hover:shadow-[0_0_20px_rgba(168,85,247,0.5)] group-hover:scale-105 transition-all duration-300 shadow-lg">
+<svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<h3 class="text-2xl font-extrabold text-white mb-2 group-hover:text-primary transition-colors">Frontend Development</h3>
+<p class="text-[#cfc2d6] font-normal text-sm leading-relaxed mb-6">
+  Merancang antarmuka web interaktif, responsif, dan aksesibel dengan standar modern web terkini.
+</p>
+</div>
+<div class="flex flex-wrap gap-2 pt-4 border-t border-[#281b4d]">
+<span class="px-3 py-1.5 rounded-lg bg-[#1f153b] text-[#ddb7ff] font-semibold text-xs border border-[#3d2a71] hover:border-[#a855f7] hover:bg-[#281b4d] hover:text-white hover:shadow-[0_0_10px_rgba(168,85,247,0.3)] transition-all cursor-default">HTML5</span>
+<span class="px-3 py-1.5 rounded-lg bg-[#1f153b] text-[#ddb7ff] font-semibold text-xs border border-[#3d2a71] hover:border-[#a855f7] hover:bg-[#281b4d] hover:text-white hover:shadow-[0_0_10px_rgba(168,85,247,0.3)] transition-all cursor-default">CSS3</span>
+<span class="px-3 py-1.5 rounded-lg bg-[#1f153b] text-[#ddb7ff] font-semibold text-xs border border-[#3d2a71] hover:border-[#a855f7] hover:bg-[#281b4d] hover:text-white hover:shadow-[0_0_10px_rgba(168,85,247,0.3)] transition-all cursor-default">JavaScript (ES6+)</span>
+<span class="px-3 py-1.5 rounded-lg bg-[#1f153b] text-[#ddb7ff] font-semibold text-xs border border-[#3d2a71] hover:border-[#a855f7] hover:bg-[#281b4d] hover:text-white hover:shadow-[0_0_10px_rgba(168,85,247,0.3)] transition-all cursor-default">React.js</span>
+<span class="px-3 py-1.5 rounded-lg bg-[#1f153b] text-[#ddb7ff] font-semibold text-xs border border-[#3d2a71] hover:border-[#a855f7] hover:bg-[#281b4d] hover:text-white hover:shadow-[0_0_10px_rgba(168,85,247,0.3)] transition-all cursor-default">Tailwind CSS</span>
+<span class="px-3 py-1.5 rounded-lg bg-[#1f153b] text-[#ddb7ff] font-semibold text-xs border border-[#3d2a71] hover:border-[#a855f7] hover:bg-[#281b4d] hover:text-white hover:shadow-[0_0_10px_rgba(168,85,247,0.3)] transition-all cursor-default">Next.js</span>
+</div>
+</div>
+<!-- Card 2: Backend & Database Dasar -->
+<div class="group bg-[#150e28] rounded-3xl p-8 border border-[#2e2056] hover:border-[#a855f7] hover:bg-[#1a1133] transition-all duration-300 shadow-xl hover:shadow-[0_15px_35px_-5px_rgba(168,85,247,0.3),0_0_25px_rgba(168,85,247,0.25)] hover:-translate-y-1.5 flex flex-col justify-between relative overflow-hidden">
+<div class="absolute -right-16 -top-16 w-36 h-36 bg-[#7c3aed]/15 rounded-full blur-2xl group-hover:bg-[#a855f7]/30 transition-all duration-500 pointer-events-none"></div>
+<div>
+<div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#7c3aed] to-[#581c87] text-white flex items-center justify-center mb-6 group-hover:from-[#9333ea] group-hover:to-[#6b21a8] group-hover:shadow-[0_0_20px_rgba(168,85,247,0.5)] group-hover:scale-105 transition-all duration-300 shadow-lg">
+<svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+<path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+<path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+</svg>
+</div>
+<h3 class="text-2xl font-extrabold text-white mb-2 group-hover:text-primary transition-colors">Backend &amp; Database Dasar</h3>
+<p class="text-[#cfc2d6] font-normal text-sm leading-relaxed mb-6">
+  Membangun API handal, mengelola pertukaran data server-side, serta memodelkan skema database terstruktur.
+</p>
+</div>
+<div class="flex flex-wrap gap-2 pt-4 border-t border-[#281b4d]">
+<span class="px-3 py-1.5 rounded-lg bg-[#1f153b] text-[#ddb7ff] font-semibold text-xs border border-[#3d2a71] hover:border-[#a855f7] hover:bg-[#281b4d] hover:text-white hover:shadow-[0_0_10px_rgba(168,85,247,0.3)] transition-all cursor-default">Node.js</span>
+<span class="px-3 py-1.5 rounded-lg bg-[#1f153b] text-[#ddb7ff] font-semibold text-xs border border-[#3d2a71] hover:border-[#a855f7] hover:bg-[#281b4d] hover:text-white hover:shadow-[0_0_10px_rgba(168,85,247,0.3)] transition-all cursor-default">Express.js</span>
+<span class="px-3 py-1.5 rounded-lg bg-[#1f153b] text-[#ddb7ff] font-semibold text-xs border border-[#3d2a71] hover:border-[#a855f7] hover:bg-[#281b4d] hover:text-white hover:shadow-[0_0_10px_rgba(168,85,247,0.3)] transition-all cursor-default">RESTful APIs</span>
+<span class="px-3 py-1.5 rounded-lg bg-[#1f153b] text-[#ddb7ff] font-semibold text-xs border border-[#3d2a71] hover:border-[#a855f7] hover:bg-[#281b4d] hover:text-white hover:shadow-[0_0_10px_rgba(168,85,247,0.3)] transition-all cursor-default">MySQL</span>
+<span class="px-3 py-1.5 rounded-lg bg-[#1f153b] text-[#ddb7ff] font-semibold text-xs border border-[#3d2a71] hover:border-[#a855f7] hover:bg-[#281b4d] hover:text-white hover:shadow-[0_0_10px_rgba(168,85,247,0.3)] transition-all cursor-default">PostgreSQL</span>
+</div>
+</div>
+<!-- Card 3: Tools & Workflow -->
+<div class="group bg-[#150e28] rounded-3xl p-8 border border-[#2e2056] hover:border-[#a855f7] hover:bg-[#1a1133] transition-all duration-300 shadow-xl hover:shadow-[0_15px_35px_-5px_rgba(168,85,247,0.3),0_0_25px_rgba(168,85,247,0.25)] hover:-translate-y-1.5 flex flex-col justify-between relative overflow-hidden">
+<div class="absolute -right-16 -top-16 w-36 h-36 bg-[#7c3aed]/15 rounded-full blur-2xl group-hover:bg-[#a855f7]/30 transition-all duration-500 pointer-events-none"></div>
+<div>
+<div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#7c3aed] to-[#581c87] text-white flex items-center justify-center mb-6 group-hover:from-[#9333ea] group-hover:to-[#6b21a8] group-hover:shadow-[0_0_20px_rgba(168,85,247,0.5)] group-hover:scale-105 transition-all duration-300 shadow-lg">
+<svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<h3 class="text-2xl font-extrabold text-white mb-2 group-hover:text-primary transition-colors">Tools &amp; Workflow</h3>
+<p class="text-[#cfc2d6] font-normal text-sm leading-relaxed mb-6">
+  Alat kolaborasi, version control, dan pipeline deployment untuk produktivitas pengerjaan proyek efisien.
+</p>
+</div>
+<div class="flex flex-wrap gap-2 pt-4 border-t border-[#281b4d]">
+<span class="px-3 py-1.5 rounded-lg bg-[#1f153b] text-[#ddb7ff] font-semibold text-xs border border-[#3d2a71] hover:border-[#a855f7] hover:bg-[#281b4d] hover:text-white hover:shadow-[0_0_10px_rgba(168,85,247,0.3)] transition-all cursor-default">Git</span>
+<span class="px-3 py-1.5 rounded-lg bg-[#1f153b] text-[#ddb7ff] font-semibold text-xs border border-[#3d2a71] hover:border-[#a855f7] hover:bg-[#281b4d] hover:text-white hover:shadow-[0_0_10px_rgba(168,85,247,0.3)] transition-all cursor-default">GitHub</span>
+<span class="px-3 py-1.5 rounded-lg bg-[#1f153b] text-[#ddb7ff] font-semibold text-xs border border-[#3d2a71] hover:border-[#a855f7] hover:bg-[#281b4d] hover:text-white hover:shadow-[0_0_10px_rgba(168,85,247,0.3)] transition-all cursor-default">VS Code</span>
+<span class="px-3 py-1.5 rounded-lg bg-[#1f153b] text-[#ddb7ff] font-semibold text-xs border border-[#3d2a71] hover:border-[#a855f7] hover:bg-[#281b4d] hover:text-white hover:shadow-[0_0_10px_rgba(168,85,247,0.3)] transition-all cursor-default">Figma to Code</span>
+<span class="px-3 py-1.5 rounded-lg bg-[#1f153b] text-[#ddb7ff] font-semibold text-xs border border-[#3d2a71] hover:border-[#a855f7] hover:bg-[#281b4d] hover:text-white hover:shadow-[0_0_10px_rgba(168,85,247,0.3)] transition-all cursor-default">Responsive Design</span>
+<span class="px-3 py-1.5 rounded-lg bg-[#1f153b] text-[#ddb7ff] font-semibold text-xs border border-[#3d2a71] hover:border-[#a855f7] hover:bg-[#281b4d] hover:text-white hover:shadow-[0_0_10px_rgba(168,85,247,0.3)] transition-all cursor-default">Vercel</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: SectionKeahlian -->
+<!-- BEGIN: SectionPerjalanan -->
+<section class="py-20 lg:py-28 relative z-20 bg-[#0d0918] border-t border-[#2a1e4a]" id="perjalanan">
+<div class="max-w-[1440px] mx-auto px-10 md:px-16 lg:px-24">
+<!-- Section Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-4">
+<div>
+<span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#1c1236] border border-[#48307b] text-[#ddb7ff] text-xs sm:text-sm font-bold tracking-wide uppercase shadow-[0_0_12px_rgba(168,85,247,0.2)]">
+<span class="w-2 h-2 rounded-full bg-[#a855f7]"></span>
+  Perjalanan
+</span>
+<h2 class="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight max-w-2xl leading-[1.15]">
+  Jejak Langkah, Pendidikan &amp; Pengalaman
+</h2>
+</div>
+<p class="text-[#cfc2d6] font-normal max-w-md text-base leading-relaxed">
+  Rangkuman dedikasi perjalanan akademik, sertifikasi profesional, dan pengalaman dalam membangun solusi rekayasa perangkat lunak modern.
+</p>
+</div>
+<!-- Dual Column Timeline Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+<!-- Column 1: Pengalaman & Aktivitas -->
+<div class="bg-[#150e28]/95 backdrop-blur-sm rounded-3xl p-8 sm:p-10 border border-[#2e2056] shadow-xl hover:border-[#a855f7] hover:shadow-[0_15px_35px_-5px_rgba(168,85,247,0.25),0_0_20px_rgba(168,85,247,0.2)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+<div class="flex items-center gap-3 pb-6 mb-6 border-b border-[#2e2056]">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#7c3aed] to-[#581c87] text-white flex items-center justify-center shrink-0 shadow-md">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<rect height="14" rx="2" ry="2" width="20" x="2" y="7"></rect>
+<path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+</svg>
+</div>
+<div>
+<h3 class="text-xl font-extrabold text-white">Pengalaman Kerja &amp; Proyek</h3>
+<p class="text-xs font-medium text-[#cfc2d6]">Aktivitas profesional &amp; kontribusi teknis</p>
+</div>
+</div>
+<!-- Timeline Items List -->
+<div class="relative border-l-2 border-[#5b3d9c] ml-3.5 pl-6 space-y-8">
+<!-- Item 1 -->
+<div class="relative group p-3.5 -ml-3 rounded-2xl transition-all duration-300 hover:bg-[#1f153d]/60 border border-transparent hover:border-[#a855f7]/50 hover:shadow-[0_0_15px_rgba(168,85,247,0.2)]">
+<div class="absolute -left-[32px] top-4 w-3.5 h-3.5 rounded-full bg-[#a855f7] border-2 border-[#150e28] ring-2 ring-[#7c3aed] shadow-[0_0_8px_rgba(168,85,247,0.8)] group-hover:scale-125 group-hover:ring-[#c084fc] group-hover:shadow-[0_0_14px_rgba(168,85,247,1)] transition-all duration-300"></div>
+<div>
+<div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+<h4 class="text-lg font-bold text-white group-hover:text-[#ddb7ff] transition-colors">Web Developer Intern / Freelance</h4>
+<span class="px-2.5 py-0.5 rounded-full bg-[#241744] text-[#ddb7ff] border border-[#4d328c] text-xs font-semibold group-hover:border-[#a855f7]">2023 - Sekarang</span>
+</div>
+<div class="text-xs font-medium text-[#a89cb5] mb-2">Freelance &amp; Portofolio Mandiri</div>
+<p class="text-sm text-[#cfc2d6] leading-relaxed mb-3">
+  Fokus pada pembuatan antarmuka web responsif, implementasi Tailwind CSS &amp; React, optimasi performa serta aksesibilitas halaman web.
+</p>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2.5 py-1 rounded-md bg-[#1f153b] text-[#ddb7ff] text-xs font-medium border border-[#3b276b] group-hover:border-[#4d328c]">React.js</span>
+<span class="px-2.5 py-1 rounded-md bg-[#1f153b] text-[#ddb7ff] text-xs font-medium border border-[#3b276b] group-hover:border-[#4d328c]">Tailwind CSS</span>
+<span class="px-2.5 py-1 rounded-md bg-[#1f153b] text-[#ddb7ff] text-xs font-medium border border-[#3b276b] group-hover:border-[#4d328c]">Web Performance</span>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="relative group p-3.5 -ml-3 rounded-2xl transition-all duration-300 hover:bg-[#1f153d]/60 border border-transparent hover:border-[#a855f7]/50 hover:shadow-[0_0_15px_rgba(168,85,247,0.2)]">
+<div class="absolute -left-[32px] top-4 w-3.5 h-3.5 rounded-full bg-[#c084fc] border-2 border-[#150e28] ring-2 ring-[#7c3aed] shadow-[0_0_8px_rgba(192,132,252,0.8)] group-hover:scale-125 group-hover:ring-[#c084fc] group-hover:shadow-[0_0_14px_rgba(192,132,252,1)] transition-all duration-300"></div>
+<div>
+<div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+<h4 class="text-lg font-bold text-white group-hover:text-[#ddb7ff] transition-colors">Frontend Project Lead</h4>
+<span class="px-2.5 py-0.5 rounded-full bg-[#241744] text-[#ddb7ff] border border-[#4d328c] text-xs font-semibold group-hover:border-[#a855f7]">2022 - 2023</span>
+</div>
+<div class="text-xs font-medium text-[#a89cb5] mb-2">Tim Proyek Kampus &amp; Kolaborasi</div>
+<p class="text-sm text-[#cfc2d6] leading-relaxed mb-3">
+  Memimpin pengembangan antarmuka landing page &amp; dashboard sistem informasi, mengkoordinasikan tugas tim, dan menjaga konsistensi komponen UI.
+</p>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2.5 py-1 rounded-md bg-[#1f153b] text-[#ddb7ff] text-xs font-medium border border-[#3b276b] group-hover:border-[#4d328c]">Leadership</span>
+<span class="px-2.5 py-1 rounded-md bg-[#1f153b] text-[#ddb7ff] text-xs font-medium border border-[#3b276b] group-hover:border-[#4d328c]">JavaScript</span>
+<span class="px-2.5 py-1 rounded-md bg-[#1f153b] text-[#ddb7ff] text-xs font-medium border border-[#3b276b] group-hover:border-[#4d328c]">Git Collaboration</span>
+</div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="relative group p-3.5 -ml-3 rounded-2xl transition-all duration-300 hover:bg-[#1f153d]/60 border border-transparent hover:border-[#a855f7]/50 hover:shadow-[0_0_15px_rgba(168,85,247,0.2)]">
+<div class="absolute -left-[32px] top-4 w-3.5 h-3.5 rounded-full bg-[#a855f7] border-2 border-[#150e28] ring-2 ring-[#7c3aed] shadow-[0_0_8px_rgba(168,85,247,0.8)] group-hover:scale-125 group-hover:ring-[#c084fc] group-hover:shadow-[0_0_14px_rgba(168,85,247,1)] transition-all duration-300"></div>
+<div>
+<div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+<h4 class="text-lg font-bold text-white group-hover:text-[#ddb7ff] transition-colors">Junior Tech Contributor</h4>
+<span class="px-2.5 py-0.5 rounded-full bg-[#241744] text-[#ddb7ff] border border-[#4d328c] text-xs font-semibold group-hover:border-[#a855f7]">2022</span>
+</div>
+<div class="text-xs font-medium text-[#a89cb5] mb-2">Open Source &amp; Komunitas Belajar</div>
+<p class="text-sm text-[#cfc2d6] leading-relaxed mb-3">
+  Eksplorasi komponen UI dan kontribusi dokumentasi serta slicing desain Figma ke kode HTML/CSS yang bersih dan terstruktur.
+</p>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2.5 py-1 rounded-md bg-[#1f153b] text-[#ddb7ff] text-xs font-medium border border-[#3b276b] group-hover:border-[#4d328c]">Figma to Code</span>
+<span class="px-2.5 py-1 rounded-md bg-[#1f153b] text-[#ddb7ff] text-xs font-medium border border-[#3b276b] group-hover:border-[#4d328c]">HTML/CSS</span>
+<span class="px-2.5 py-1 rounded-md bg-[#1f153b] text-[#ddb7ff] text-xs font-medium border border-[#3b276b] group-hover:border-[#4d328c]">Open Source</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Column 2: Pendidikan & Sertifikasi -->
+<div class="bg-[#150e28]/95 backdrop-blur-sm rounded-3xl p-8 sm:p-10 border border-[#2e2056] shadow-xl hover:border-[#a855f7] hover:shadow-[0_15px_35px_-5px_rgba(168,85,247,0.25),0_0_20px_rgba(168,85,247,0.2)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+<div class="flex items-center gap-3 pb-6 mb-6 border-b border-[#2e2056]">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#7c3aed] to-[#581c87] text-white flex items-center justify-center shrink-0 shadow-md">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+<path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+</svg>
+</div>
+<div>
+<h3 class="text-xl font-extrabold text-white">Pendidikan &amp; Sertifikasi</h3>
+<p class="text-xs font-medium text-[#cfc2d6]">Latar belakang akademis &amp; kualifikasi resmi</p>
+</div>
+</div>
+<!-- Timeline Items List -->
+<div class="relative border-l-2 border-[#5b3d9c] ml-3.5 pl-6 space-y-8">
+<!-- Item 1 -->
+<div class="relative group p-3.5 -ml-3 rounded-2xl transition-all duration-300 hover:bg-[#1f153d]/60 border border-transparent hover:border-[#a855f7]/50 hover:shadow-[0_0_15px_rgba(168,85,247,0.2)]">
+<div class="absolute -left-[32px] top-4 w-3.5 h-3.5 rounded-full bg-[#a855f7] border-2 border-[#150e28] ring-2 ring-[#7c3aed] shadow-[0_0_8px_rgba(168,85,247,0.8)] group-hover:scale-125 group-hover:ring-[#c084fc] group-hover:shadow-[0_0_14px_rgba(168,85,247,1)] transition-all duration-300"></div>
+<div>
+<div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+<h4 class="text-lg font-bold text-white group-hover:text-[#ddb7ff] transition-colors">S1 Teknik Informatika / Sistem Informasi</h4>
+<span class="px-2.5 py-0.5 rounded-full bg-[#241744] text-[#ddb7ff] border border-[#4d328c] text-xs font-semibold group-hover:border-[#a855f7]">2021 - Sekarang</span>
+</div>
+<div class="text-xs font-medium text-[#a89cb5] mb-2">Pendidikan Tinggi • IPK Memuaskan</div>
+<p class="text-sm text-[#cfc2d6] leading-relaxed mb-3">
+  Fokus bidang Rekayasa Perangkat Lunak, Struktur Data &amp; Algoritma, Basis Data, serta Arsitektur Web Modern dengan capaian akademik unggul.
+</p>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2.5 py-1 rounded-md bg-[#1f153b] text-[#ddb7ff] text-xs font-medium border border-[#3b276b] group-hover:border-[#4d328c]">Struktur Data</span>
+<span class="px-2.5 py-1 rounded-md bg-[#1f153b] text-[#ddb7ff] text-xs font-medium border border-[#3b276b] group-hover:border-[#4d328c]">Rekayasa Web</span>
+<span class="px-2.5 py-1 rounded-md bg-[#1f153b] text-[#ddb7ff] text-xs font-medium border border-[#3b276b] group-hover:border-[#4d328c]">Database Systems</span>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="relative group p-3.5 -ml-3 rounded-2xl transition-all duration-300 hover:bg-[#1f153d]/60 border border-transparent hover:border-[#a855f7]/50 hover:shadow-[0_0_15px_rgba(168,85,247,0.2)]">
+<div class="absolute -left-[32px] top-4 w-3.5 h-3.5 rounded-full bg-[#c084fc] border-2 border-[#150e28] ring-2 ring-[#7c3aed] shadow-[0_0_8px_rgba(192,132,252,0.8)] group-hover:scale-125 group-hover:ring-[#c084fc] group-hover:shadow-[0_0_14px_rgba(192,132,252,1)] transition-all duration-300"></div>
+<div>
+<div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+<h4 class="text-lg font-bold text-white group-hover:text-[#ddb7ff] transition-colors">Sertifikasi Frontend Web Development</h4>
+<span class="px-2.5 py-0.5 rounded-full bg-[#241744] text-[#ddb7ff] border border-[#4d328c] text-xs font-semibold group-hover:border-[#a855f7]">2023</span>
+</div>
+<div class="text-xs font-medium text-[#a89cb5] mb-2">Dicoding / Coursera / FreeCodeCamp</div>
+<p class="text-sm text-[#cfc2d6] leading-relaxed mb-3">
+  Sertifikasi penyelesaian jalur belajar pengembang web modern meliputi JavaScript ES6+, React ecosystem, dan styling framework terkini.
+</p>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2.5 py-1 rounded-md bg-[#1f153b] text-[#ddb7ff] text-xs font-medium border border-[#3b276b] group-hover:border-[#4d328c]">Certified</span>
+<span class="px-2.5 py-1 rounded-md bg-[#1f153b] text-[#ddb7ff] text-xs font-medium border border-[#3b276b] group-hover:border-[#4d328c]">Frontend Specialist</span>
+<span class="px-2.5 py-1 rounded-md bg-[#1f153b] text-[#ddb7ff] text-xs font-medium border border-[#3b276b] group-hover:border-[#4d328c]">React Pro</span>
+</div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="relative group p-3.5 -ml-3 rounded-2xl transition-all duration-300 hover:bg-[#1f153d]/60 border border-transparent hover:border-[#a855f7]/50 hover:shadow-[0_0_15px_rgba(168,85,247,0.2)]">
+<div class="absolute -left-[32px] top-4 w-3.5 h-3.5 rounded-full bg-[#a855f7] border-2 border-[#150e28] ring-2 ring-[#7c3aed] shadow-[0_0_8px_rgba(168,85,247,0.8)] group-hover:scale-125 group-hover:ring-[#c084fc] group-hover:shadow-[0_0_14px_rgba(168,85,247,1)] transition-all duration-300"></div>
+<div>
+<div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+<h4 class="text-lg font-bold text-white group-hover:text-[#ddb7ff] transition-colors">SMK Rekayasa Perangkat Lunak / SMA IPA</h4>
+<span class="px-2.5 py-0.5 rounded-full bg-[#241744] text-[#ddb7ff] border border-[#4d328c] text-xs font-semibold group-hover:border-[#a855f7]">2018 - 2021</span>
+</div>
+<div class="text-xs font-medium text-[#a89cb5] mb-2">Pendidikan Menengah Kejuruan / Atas</div>
+<p class="text-sm text-[#cfc2d6] leading-relaxed mb-3">
+  Awal mula ketertarikan mendalam pada dunia pemrograman komputer, dasar logika algoritma, dan dasar-dasar perancangan web statis.
+</p>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2.5 py-1 rounded-md bg-[#1f153b] text-[#ddb7ff] text-xs font-medium border border-[#3b276b] group-hover:border-[#4d328c]">Dasar Logika</span>
+<span class="px-2.5 py-1 rounded-md bg-[#1f153b] text-[#ddb7ff] text-xs font-medium border border-[#3b276b] group-hover:border-[#4d328c]">Pemrograman Dasar</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: SectionPerjalanan -->
+<!-- BEGIN: SectionKontak -->
+<section class="py-20 lg:py-28 relative z-20 bg-gradient-to-b from-[#0d0918] via-[#120b24] to-[#090611] border-t border-[#2a1e4a]" id="kontak">
+<div class="max-w-[1440px] mx-auto px-10 md:px-16 lg:px-24">
+<!-- Section Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-4">
+<div>
+<span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#1c1236] border border-[#48307b] text-[#ddb7ff] text-xs sm:text-sm font-bold tracking-wide uppercase shadow-[0_0_12px_rgba(168,85,247,0.2)]">
+<span class="w-2 h-2 rounded-full bg-[#a855f7]"></span>
+  Kontak
+</span>
+<h2 class="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight max-w-2xl leading-[1.15]">
+  Mari Terhubung &amp; Berkolaborasi
+</h2>
+</div>
+<p class="text-[#cfc2d6] font-normal max-w-md text-base leading-relaxed">
+  Punya ide proyek menarik, peluang kerja sama, atau sekadar ingin berdiskusi seputar teknologi web? Jangan ragu untuk mengirimkan pesan.
+</p>
+</div>
+<!-- Two Column Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Left Column: Contact Details & Social Channels -->
+<div class="lg:col-span-5 bg-[#150e28]/95 backdrop-blur-sm rounded-3xl p-8 sm:p-10 border border-[#2e2056] shadow-xl hover:border-[#a855f7]/70 hover:shadow-[0_15px_35px_-5px_rgba(168,85,247,0.2)] transition-all duration-300 flex flex-col justify-between space-y-8">
+<div>
+<h3 class="text-2xl font-extrabold text-white mb-2">Informasi Kontak</h3>
+<p class="text-[#cfc2d6] text-sm font-normal leading-relaxed mb-6">
+  Silakan hubungi saya melalui salah satu kanal di bawah ini untuk respon yang cepat.
+</p>
+<div class="space-y-4">
+<!-- Email Card -->
+<a class="flex items-start gap-4 p-4 rounded-2xl bg-[#1d1438] border border-[#3b276b] hover:border-[#a855f7] hover:bg-[#231846] transition-all duration-300 group hover:shadow-[0_10px_25px_-5px_rgba(168,85,247,0.35),0_0_15px_rgba(168,85,247,0.2)] hover:-translate-y-1" href="mailto:hello@yudhobaskoro.dev">
+<div class="w-11 h-11 rounded-xl bg-gradient-to-br from-[#7c3aed] to-[#581c87] text-white flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(168,85,247,0.5)] transition-all shadow-md">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+</svg>
+</div>
+<div>
+<div class="text-xs font-semibold text-[#a89cb5] uppercase tracking-wider">Email</div>
+<div class="text-base font-bold text-white group-hover:text-[#ddb7ff] transition-colors">hello@yudhobaskoro.dev</div>
+</div>
+</a>
+<!-- WhatsApp Card -->
+<a class="flex items-start gap-4 p-4 rounded-2xl bg-[#1d1438] border border-[#3b276b] hover:border-[#a855f7] hover:bg-[#231846] transition-all duration-300 group hover:shadow-[0_10px_25px_-5px_rgba(168,85,247,0.35),0_0_15px_rgba(168,85,247,0.2)] hover:-translate-y-1" href="https://wa.me/6281234567890" rel="noopener noreferrer" target="_blank">
+<div class="w-11 h-11 rounded-xl bg-gradient-to-br from-[#7c3aed] to-[#581c87] text-white flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(168,85,247,0.5)] transition-all shadow-md">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"></path>
+</svg>
+</div>
+<div>
+<div class="text-xs font-semibold text-[#a89cb5] uppercase tracking-wider">WhatsApp / Telepon</div>
+<div class="text-base font-bold text-white group-hover:text-[#ddb7ff] transition-colors">+62 812-3456-7890</div>
+</div>
+</a>
+<!-- Location Card -->
+<div class="flex items-start gap-4 p-4 rounded-2xl bg-[#1d1438] border border-[#3b276b] hover:border-[#6744a8] transition-all duration-300">
+<div class="w-11 h-11 rounded-xl bg-gradient-to-br from-[#7c3aed] to-[#581c87] text-white flex items-center justify-center shrink-0 shadow-md">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+<path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+</div>
+<div>
+<div class="text-xs font-semibold text-[#a89cb5] uppercase tracking-wider">Lokasi</div>
+<div class="text-base font-bold text-white">Jakarta / Indonesia (WIB / GMT+7)</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Availability status pill -->
+<div class="flex items-center gap-3 p-3.5 rounded-2xl bg-[#112d26] border border-[#1b6b55] text-emerald-300 text-sm font-semibold shadow-inner hover:shadow-[0_0_15px_rgba(16,185,129,0.3)] transition-all">
+<span class="relative flex h-3 w-3 shrink-0">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-400"></span>
+</span>
+<span class="">Open for Opportunities • Freelance &amp; Full-time</span>
+</div>
+<!-- Social Links -->
+<div>
+<div class="text-xs font-semibold text-[#a89cb5] uppercase tracking-wider mb-3">Media Sosial &amp; Profil</div>
+<div class="grid grid-cols-2 gap-3">
+<a class="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-[#1d1438] border border-[#3b276b] hover:border-[#a855f7] hover:bg-[#231846] text-[#e7defc] hover:text-white text-sm font-bold shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_16px_rgba(168,85,247,0.35)]" href="https://github.com" rel="noopener noreferrer" target="_blank">
+<svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24">
+<path clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" fill-rule="evenodd"></path>
+</svg>
+<span class="">GitHub</span>
+</a>
+<a class="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-[#1d1438] border border-[#3b276b] hover:border-[#a855f7] hover:bg-[#231846] text-[#e7defc] hover:text-white text-sm font-bold shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_16px_rgba(168,85,247,0.35)]" href="https://linkedin.com" rel="noopener noreferrer" target="_blank">
+<svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24">
+<path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path>
+</svg>
+<span class="">LinkedIn</span>
+</a>
+<a class="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-[#1d1438] border border-[#3b276b] hover:border-[#a855f7] hover:bg-[#231846] text-[#e7defc] hover:text-white text-sm font-bold shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_16px_rgba(168,85,247,0.35)]" href="https://twitter.com" rel="noopener noreferrer" target="_blank">
+<svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24">
+<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
+</svg>
+<span class="">Twitter / X</span>
+</a>
+<a class="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-[#1d1438] border border-[#3b276b] hover:border-[#a855f7] hover:bg-[#231846] text-[#e7defc] hover:text-white text-sm font-bold shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_16px_rgba(168,85,247,0.35)]" href="https://instagram.com" rel="noopener noreferrer" target="_blank">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<rect height="20" rx="5" ry="5" width="20" x="2" y="2"></rect>
+<path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+</svg>
+<span class="">Instagram</span>
+</a>
+</div>
+</div>
+<!-- Fast response guarantee -->
+<div class="p-4 rounded-2xl bg-[#1c1336] border border-[#372666] shadow-inner flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-[#271b4a] text-[#ddb7ff] flex items-center justify-center shrink-0">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="10"></circle>
+<polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+</div>
+<p class="text-xs text-[#cfc2d6] font-medium leading-relaxed">
+  Saya biasanya merespons dalam waktu <span class="font-bold text-white">kurang dari 24 jam</span> di hari kerja.
+</p>
+</div>
+</div>
+<!-- Right Column: Interactive Contact Form -->
+<div class="lg:col-span-7 bg-[#150e28] rounded-3xl p-8 sm:p-10 border border-[#2e2056] shadow-xl hover:border-[#a855f7]/70 hover:shadow-[0_15px_35px_-5px_rgba(168,85,247,0.2)] transition-all duration-300 flex flex-col justify-between">
+<div>
+<div class="mb-8">
+<h3 class="text-2xl font-extrabold text-white">Kirim Pesan Langsung</h3>
+<p class="text-[#cfc2d6] text-sm font-normal mt-1">
+  Isi formulir di bawah ini dan saya akan segera menghubungi Anda kembali.
+</p>
+</div>
+<form action="#" class="space-y-5" method="POST" onsubmit="event.preventDefault();">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+<!-- Name Input -->
+<div>
+<label class="block text-xs font-semibold text-[#a89cb5] uppercase tracking-wider mb-2">Nama Lengkap *</label>
+<input class="w-full px-4 py-3 rounded-xl bg-[#1c1336] border border-[#3d2a71] hover:border-[#a855f7]/70 focus:border-[#a855f7] focus:ring-4 focus:ring-[#a855f7]/25 focus:shadow-[0_0_15px_rgba(168,85,247,0.35)] text-sm text-white placeholder-[#786b90] outline-none transition-all duration-300 shadow-inner" placeholder="cth. Andi Pratama" required="" type="text"/>
+</div>
+<!-- Email Input -->
+<div>
+<label class="block text-xs font-semibold text-[#a89cb5] uppercase tracking-wider mb-2">Alamat Email *</label>
+<input class="w-full px-4 py-3 rounded-xl bg-[#1c1336] border border-[#3d2a71] hover:border-[#a855f7]/70 focus:border-[#a855f7] focus:ring-4 focus:ring-[#a855f7]/25 focus:shadow-[0_0_15px_rgba(168,85,247,0.35)] text-sm text-white placeholder-[#786b90] outline-none transition-all duration-300 shadow-inner" placeholder="cth. andi@email.com" required="" type="email"/>
+</div>
+</div>
+<!-- Subject Select -->
+<div>
+<label class="block text-xs font-semibold text-[#a89cb5] uppercase tracking-wider mb-2">Subjek / Jenis Proyek *</label>
+<select class="w-full px-4 py-3 rounded-xl bg-[#1c1336] border border-[#3d2a71] hover:border-[#a855f7]/70 focus:border-[#a855f7] focus:ring-4 focus:ring-[#a855f7]/25 focus:shadow-[0_0_15px_rgba(168,85,247,0.35)] text-sm text-white outline-none transition-all duration-300 cursor-pointer shadow-inner">
+<option class="bg-[#150e28] text-white" value="Pengembangan Website">Pengembangan Website</option>
+<option class="bg-[#150e28] text-white" value="Kolaborasi Proyek">Kolaborasi Proyek</option>
+<option class="bg-[#150e28] text-white" value="Peluang Kerja / Fulltime">Peluang Kerja / Fulltime</option>
+<option class="bg-[#150e28] text-white" value="Lainnya">Lainnya</option>
+</select>
+</div>
+<!-- Message Textarea -->
+<div>
+<label class="block text-xs font-semibold text-[#a89cb5] uppercase tracking-wider mb-2">Isi Pesan *</label>
+<textarea class="w-full px-4 py-3 rounded-xl bg-[#1c1336] border border-[#3d2a71] hover:border-[#a855f7]/70 focus:border-[#a855f7] focus:ring-4 focus:ring-[#a855f7]/25 focus:shadow-[0_0_15px_rgba(168,85,247,0.35)] text-sm text-white placeholder-[#786b90] outline-none transition-all duration-300 resize-none shadow-inner" placeholder="Tuliskan detail ide atau pertanyaan Anda di sini..." required="" rows="5"></textarea>
+</div>
+<!-- Submit CTA Button -->
+<div class="pt-2">
+<button class="group relative w-full inline-flex items-stretch border border-[#7c3aed] bg-[#1a1233] transition-all duration-300 hover:scale-[1.02] hover:border-[#c084fc] hover:shadow-[0_0_28px_rgba(168,85,247,0.55),0_0_12px_rgba(124,58,237,0.4)] active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-[#a855f7] rounded-xl overflow-hidden cursor-pointer" type="submit">
+<!-- Shimmer highlight -->
+<span class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none"></span>
+<div class="w-14 h-14 bg-gradient-to-br from-[#7c3aed] to-[#581c87] group-hover:from-[#9333ea] group-hover:to-[#6b21a8] transition-colors flex items-center justify-center shrink-0">
+<svg class="w-6 h-6 text-white stroke-[2.4] transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="flex-1 px-6 flex items-center justify-center font-bold text-white text-lg tracking-normal group-hover:bg-[#231846] transition-colors">
+  Kirim Pesan
+</div>
+</button>
+</div>
+</form>
+</div>
+<!-- Privacy Notice -->
+<div class="flex items-center gap-2 mt-6 pt-4 border-t border-[#261947] text-xs text-[#a89cb5]">
+<svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+</svg>
+<span class="">Data Anda aman dan tidak akan dibagikan ke pihak ketiga.</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: SectionKontak -->
+<!-- BEGIN: MainFooter -->
+<footer class="w-full bg-[#090611] border-t border-[#2a1e4a] py-10 relative z-30">
+<div class="max-w-[1440px] mx-auto px-10 md:px-16 lg:px-24 flex flex-col md:flex-row items-center justify-between gap-6">
+<!-- Brand Logo & Copyright -->
+<div class="flex items-center gap-4">
+<a aria-label="Beranda" class="flex items-center gap-2 group focus:outline-none" href="#">
+<div class="p-1 rounded-xl bg-[#191030] border border-[#3b276b] group-hover:border-[#a855f7] group-hover:shadow-[0_0_15px_rgba(168,85,247,0.4)] shadow-sm transition-all duration-300">
+<svg class="w-8 h-8 transition-transform duration-300 group-hover:scale-105" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<g>
+<path d="M14.5 12.2L24.8 6.5C26.1 5.8 27.7 6.2 28.5 7.5L34.2 17.2C34.9 18.5 34.5 20.1 33.2 20.9L22.9 26.6C21.6 27.3 20 26.9 19.2 25.6L13.5 15.9C12.8 14.6 13.2 13 14.5 12.2Z" fill="#a855f7"></path>
+<path d="M21.2 25.8L28.8 38.6C29.4 39.7 30.9 40 32 39.3L37.2 36.2C38.3 35.5 38.6 34.1 38 33L30.4 20.2L21.2 25.8Z" fill="#c084fc" fill-opacity="0.9"></path>
+<path d="M10.2 24.5L18.4 29.2L15.3 34.6C14.7 35.7 13.3 36 12.2 35.4L8.1 33C7 32.4 6.7 31 7.3 29.9L10.2 24.5Z" fill="#7e22ce"></path>
+<path d="M18.8 13.8L22.9 11.5L25.4 15.7L21.3 18L18.8 13.8Z" fill="#f3e8ff"></path>
+</g>
+</svg>
+</div>
+</a>
+<div>
+<div class="text-sm font-extrabold text-white">Yudho Baskoro</div>
+<div class="text-xs text-[#a89cb5] font-medium">© 2024 Yudho Baskoro. Seluruh hak cipta dilindungi.</div>
+</div>
+</div>
+<!-- Navigation Shortcut & Back to Top -->
+<div class="flex items-center gap-6">
+<div class="hidden sm:flex items-center space-x-6 text-sm font-medium text-[#cfc2d6]">
+<a class="hover:text-[#c084fc] transition-colors" href="#beranda">Beranda</a>
+<a class="hover:text-[#c084fc] transition-colors" href="#tentang">Tentang</a>
+<a class="hover:text-[#c084fc] transition-colors" href="#keahlian">Keahlian</a>
+<a class="hover:text-[#c084fc] transition-colors" href="#perjalanan">Perjalanan</a>
+<a class="hover:text-[#c084fc] transition-colors" href="#kontak">Kontak</a>
+</div>
+<a aria-label="Kembali ke Atas" class="w-10 h-10 rounded-full border border-[#3b2a63] hover:border-[#a855f7] flex items-center justify-center text-[#ddb7ff] transition-all duration-300 hover:scale-110 active:scale-95 bg-[#170f2d] shadow-sm hover:shadow-[0_0_18px_rgba(168,85,247,0.5)]" href="#beranda">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+</svg>
+</a>
+</div>
+</div>
+</footer>
+<!-- END: MainFooter -->
+</body></html>
